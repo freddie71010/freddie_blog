@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+
+from .views import about_page, contact_page, home_page
+
 
 urlpatterns = [
     path('fvs-admin/', admin.site.urls),
-    path('', views.home_page, name='home')
+    path('', home_page, name='home'),
+    path('contact/', contact_page, name='contact'),
+    path('about/', about_page, name='about'),
 ]
