@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 
+from .forms import BlogPostModelForm
 from .models import BlogPost
 
 
@@ -12,8 +13,13 @@ def blog_post_list_view(request):
 
 
 def blog_post_create_view(request):
-    template_name = 'blog_posts/create.html'
-    context = {'form': None}
+    form = BlogPostModelForm(request.POST or None)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.save()
+        form = BlogPostModelForm()
+    template_name = 'form.html'
+    context = {'form': form}
     return render(request, template_name, context)
 
 
