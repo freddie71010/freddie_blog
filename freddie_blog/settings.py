@@ -52,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'freddie_blog.urls'
+LOGIN_URL = '/login'
 
 TEMPLATES = [
     {
