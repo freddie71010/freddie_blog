@@ -22,3 +22,12 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return f'/blog/{self.slug}'
+
+    def get_edit_url(self):
+        return f'{self.get_absolute_url}/edit/'
+
+    def get_delete_url(self):
+        return f'{self.get_absolute_url}/delete/'
