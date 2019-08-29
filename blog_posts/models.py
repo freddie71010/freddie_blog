@@ -6,6 +6,14 @@ User = settings.AUTH_USER_MODEL
 
 
 class BlogPost(models.Model):
+    """
+    blogpost_set --> queryset related to the user
+
+    Example:
+    j = User.objects.first() --> <User: fvs>
+    j.blogpost_set.all() -->
+    <QuerySet [<BlogPost: Galaxy S6>, <BlogPost: Part 8 of The Sleeping Sheep>, <BlogPost: Hello World>]
+    """
     # id = models.IntegerField() # pk
     user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=120)
