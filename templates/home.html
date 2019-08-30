@@ -2,16 +2,12 @@
 
 {% block content %}
 
-{{ title }}
-{{ user }}
-{{ user.is_authenticated }}
-
-{{ request.path }}
+<h1>{{ title }}, {{ user }}!</h1>
 
 {% if user.is_authenticated %}
-<h1>User only data</h1>
-    {% for num in my_list %}
-    <li>{{num}}</li>
+
+    {% for a in blog_list %}
+        {% include 'blog_posts/list-inline.html' with blog_post=a truncate=True detail=False %}
     {% endfor %}
 {% endif %}
 

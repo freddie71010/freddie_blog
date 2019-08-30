@@ -1,3 +1,4 @@
+from blog_posts.models import BlogPost
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template.loader import get_template
@@ -6,13 +7,9 @@ from .forms import ContactForm
 
 
 def home_page(request):
-    my_title = 'Hello there...'
-    my_name = 'Freddie'
-    fake_name = 'Testing'
-    title = 'Hello Worlddd'
-    my_list = [1, 2, 3, 4]
-    kwargs = local_vars_to_dict(locals())
-    return render(request, 'home.html', kwargs)
+    qs = BlogPost.objects.all()[:5]
+    context = {'title': 'Welcome to FVS Blog', 'blog_list': qs}
+    return render(request, 'home.html', context)
 
 
 def about_page(request):
