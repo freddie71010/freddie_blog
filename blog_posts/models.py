@@ -23,6 +23,11 @@ class BlogPost(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    objects = BlogPostManger()
+
+    class Meta:
+        ordering = ['-publish_date', '-updated', '-timestamp']
+
     def __str__(self):
         return self.title
 
