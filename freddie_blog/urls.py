@@ -17,6 +17,7 @@ from blog_posts.views import blog_post_create_view
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from searches.views import search_view
 
 from .views import about_page, contact_page, example_page, home_page
 
@@ -25,6 +26,7 @@ urlpatterns = [
     path('', home_page, name='home'),
     path('blog/', include('blog_posts.urls')),
     path('blog-new/', blog_post_create_view),
+    path('search/', search_view),
     # These two are the same thing:
     #       path('blog/<int: post_id>/', blog_post_detail,
     #       re_path('blog/(?P<post_id>\d+/$', blog_post_detail,
