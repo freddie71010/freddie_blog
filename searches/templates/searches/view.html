@@ -7,6 +7,11 @@
         {% if query %}
             <p class="lead">You searched for {{query}}</p>
         {% endif %}
+        {% for blog_item in blog_list %}
+
+            {% include 'blog_posts/list-inline.html' with blog_post=blog_item truncate=True detail=False %}
+
+        {% endfor %}
     </div>
 </div>
 
